@@ -34,8 +34,8 @@ public class thetaMAP extends Mapper<LongWritable, Text, Text, FloatWritable> {
 				Xi[i]=Float.parseFloat(tok[i-1]);
 			}
 		}
+                float exp = 0;
 		for(int i=0;i<Xi.length;i++){
-			float exp=0;
 			exp+=(Xi[i]*theta_i.get(i));
 			//If you choose to use perceptron learning rule
 			/*if(i==num_features){
