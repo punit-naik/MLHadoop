@@ -31,4 +31,6 @@ It's shapes will correspond to the shapes defined above.
 
 This program uses Naive Gaussian Elimination method as mentioned eariler which produces a lot of intermediate outputs. This is fine for large datasets but as the daaset grows (with the number of input rows), this program will produce a lot of intermediate outputs which might cause a bottleneck on the I/O.
 
+**NOTE**: Disk I/O can be sgnificantly improved using chained MR job.
+
 I will think about improving the algorithm flow/process or using a different technique altogether.
