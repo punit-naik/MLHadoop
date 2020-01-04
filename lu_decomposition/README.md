@@ -2,8 +2,6 @@
 
 This mapreduce algorithm splits massively large matrix into it's `L` and `U` components. It uses the Naive Gaussian Elimination technique to do so.
 
-**NOTE**: Only works on square matrix inputs
-
 # Program Execution Arguments
 
 This programs only expects two arguments:
