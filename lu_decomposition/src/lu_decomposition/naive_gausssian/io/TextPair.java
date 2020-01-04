@@ -16,7 +16,7 @@ public class TextPair implements WritableComparable<TextPair> {
 	}
 	
 	public String getSecond() {
-		return this.t1;
+		return this.t2;
 	}
 
 	@Override
