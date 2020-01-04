@@ -31,6 +31,8 @@ It's shapes will correspond to the shapes defined above.
 
 This program uses Naive Gaussian Elimination method as mentioned eariler which produces a lot of intermediate outputs. This is fine for large datasets but as the daaset grows (with the number of input rows), this program will produce a lot of intermediate outputs which might cause a bottleneck on the I/O.
 
-**NOTE**: Disk I/O can be sgnificantly improved using chained MR job.
+**NOTE**: Disk I/O can be significantly improved using Chained mappers and reducers in the MR job.
 
-I will think about improving the algorithm flow/process or using a different technique altogether.
+# Deprecated
+
+This version is now depricated and you can find the newer, improved, low disk I/O version of this code at [LUDecomposition](https://github.com/punit-naik/MLHadoop/tree/master/LUDecomposition)
