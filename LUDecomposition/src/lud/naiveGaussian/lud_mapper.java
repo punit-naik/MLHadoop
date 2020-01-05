@@ -13,9 +13,11 @@ public class lud_mapper extends Mapper<Text, Text, Text, Text> {
 	private long n;
 	private Double[] nVal = null;
 	
+	@Override
 	public void setup (Context context) throws IOException, InterruptedException {
 		lud_mapper.total_records = context.getConfiguration().getLong("total_records", 0);
 		this.n = context.getConfiguration().getLong("n", 0);
+		this.nVal = initial_input_mapper.readNthRow(context.getConfiguration());
 	}
 	
 	public void map(Text key, Text value, Context context) throws IOException, InterruptedException {
@@ -43,6 +45,10 @@ public class lud_mapper extends Mapper<Text, Text, Text, Text> {
 				for (int i = 0; i< lud_mapper.total_records; i++) {
 					rowElementsModified[i] = (Double) (rowElements[i] - this.nVal[i]*multiplier);
 				}
+				
+				// Doing this so that N+1th row is stored before any KV pair is generated
+				if (row==(this.n+1))
+					Utils.storeToHDFS(Utils.arrayToCSV(rowElementsModified), context.getConfiguration().get("find_nth_row_output"), context.getConfiguration());
 				
 				context.write(new Text(String.valueOf(row)), new Text(Utils.arrayToCSV(rowElementsModified)));
 			}

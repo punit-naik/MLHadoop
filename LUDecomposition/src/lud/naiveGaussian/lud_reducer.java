@@ -32,6 +32,7 @@ public class lud_reducer extends Reducer<Text, Text, Text, Text> {
 			}
 		}
 		
+		
 		// Processing rest of the rows
 		for (Text value:values) {
 			
@@ -57,6 +58,10 @@ public class lud_reducer extends Reducer<Text, Text, Text, Text> {
 						for (int i = 0; i< lud_reducer.total_records; i++) {
 							rowElementsModified[i] = (Double) (rowElements[i] - this.nVal[i]*multiplier);
 						}
+						
+						// Doing this so that N+1th row is stored before any KV pair is generated
+						if (row==(this.n+1))
+							Utils.storeToHDFS(Utils.arrayToCSV(rowElementsModified), context.getConfiguration().get("find_nth_row_output"), context.getConfiguration());
 						
 						context.write(new Text(String.valueOf(row)), new Text(Utils.arrayToCSV(rowElementsModified)));
 					}

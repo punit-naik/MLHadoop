@@ -85,11 +85,14 @@ public class lud_driver {
 		conf.setBoolean("upper", false);
 		job = new Job(conf);
 		FileInputFormat.addInputPath(job, merge_results_input_path);
-		merge_results_driver.runWithJob(job, output+"/LU_Components/L");
+		String l_output_path = output+"/LU_Components/L";
+		merge_results_driver.runWithJob(job, l_output_path);
 		
 		conf.setBoolean("upper", true);
 		job = new Job(conf);
+		String u_output_path = output+"/LU_Components/U";
 		FileInputFormat.addInputPath(job, merge_results_input_path);
-		merge_results_driver.runWithJob(job, output+"/LU_Components/U");
+		merge_results_driver.runWithJob(job, u_output_path);
+		
 	}
 }
