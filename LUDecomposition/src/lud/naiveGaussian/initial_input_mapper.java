@@ -48,15 +48,17 @@ public class initial_input_mapper extends Mapper<Text, Text, Text, Text> {
 	
 	@Override
 	public void cleanup (Context context) throws IOException, InterruptedException {
-		if (n == 0) {
+		if (n == 0 && n>=input_range[0] && n<=input_range[1]) {
 			input_range[1] = input_range[0] + counter - 1;
 			// Sending Nth Row to all reducers
-			for (long i = input_range[0] ; i <= input_range[1] ; i++)
+			for (long i = 0 ; i <= input_range[1] ; i++)
 				context.write(new Text(String.valueOf(i)), new Text("Nth Row->"+this.nVal));
 		}
 		
 		// Have to do this because there is a mapper after this map phase, and not a reducer.
 		// Otherwise I would have used the same logic like in the if block above.
+		
+		// NOTE: Below code block is problematic. If the nth row is not in the split, it will set it to null. Have to improve this.
 		else
 			for (TextPair tp:toBeSent)
 				context.write(new Text(tp.getFirst()), new Text(tp.getSecond()+";"+this.nVal));
