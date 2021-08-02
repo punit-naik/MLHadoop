@@ -6,7 +6,7 @@ NOTE: I think some of the algorithms implemented here can be improved in time as
 
 Language used: Java
 
-IDE used: Eclipse IDE with HDT (Hadoop Development Tools) plugin installed.
+IDE used: Eclipse IDE with [HDT (Hadoop Development Tools - Click to download)](https://archive.apache.org/dist/incubator/hdt/hdt-0.0.2.incubating/hdt-0.0.2.incubating-bin.tar.gz) plugin installed.
 
 Hadoop version used: 1.2.1
 
