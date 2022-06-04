@@ -13,7 +13,7 @@ public class thetaMAP extends Mapper<LongWritable, Text, Text, FloatWritable> {
 	public static ArrayList<Float> theta_i=new ArrayList<Float>();
 	@Override
 	public void setup(Context context) throws IOException, InterruptedException{
-		alpha=context.getConfiguration().getFloat("alpha",0),
+		alpha=context.getConfiguration().getFloat("alpha",0);
 		number_inputs=context.getCounter(org.apache.hadoop.mapred.Task.Counter.MAP_INPUT_RECORDS).getValue();
 	}
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
