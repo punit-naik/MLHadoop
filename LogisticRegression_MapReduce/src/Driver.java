@@ -35,7 +35,7 @@ public class Driver {
 			else{
 				int iter=0;
 				//args[4] is the output path for storing the theta values.
-				BufferedReader br1 = new BufferedReader(new InputStreamReader(hdfs.open(new Path(args[4]))));
+				BufferedReader br1 = new BufferedReader(new InputStreamReader(hdfs.open(new Path(args[4]+"/part-r-00000"))));
 				String line1=null;
 				while((line1=br1.readLine())!=null){
 					String[] theta_line=line1.toString().split("\t");
