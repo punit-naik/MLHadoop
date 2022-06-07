@@ -9,13 +9,8 @@ import lud.Utils;
 
 public class lud_reducer extends Reducer<Text, Text, Text, Text> {
 	
-	private static long total_records;
 	private long n;
 	private Double[] nVal = null;
-	
-	public void setup (Context context) throws IOException, InterruptedException {
-		lud_reducer.total_records = context.getConfiguration().getLong("total_records", 0);
-	}
 	
 	public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 		
@@ -54,8 +49,8 @@ public class lud_reducer extends Reducer<Text, Text, Text, Text> {
 						
 						context.write(new Text(row+","+this.n), new Text(String.valueOf(multiplier)));
 						
-						Double[] rowElementsModified = new Double[(int) lud_reducer.total_records];
-						for (int i = 0; i< lud_reducer.total_records; i++) {
+						Double[] rowElementsModified = new Double[(int) rowElements.length];
+						for (int i = 0; i< rowElementsModified.length; i++) {
 							rowElementsModified[i] = (Double) (rowElements[i] - this.nVal[i]*multiplier);
 						}
 						
